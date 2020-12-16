@@ -2,7 +2,25 @@
 
     // Store tiers in individual arrays
 
+    console.log("hello")
+    
+    const tier1 = ["banana"];
+    const tier2 = [];
+    const tier3 = [];
+    const tier4 = [];
+
     // Display names in correct div
+    displayTiers(tier1)
+
+    // Function that displays players from each tier on page
+    function displayTiers(tier) {
+        for (let i = 0; i < tier.length; i++) {
+            const newDiv = $("<div>");
+            newDiv.text(tier[i]);
+            $("#tier1").append(newDiv);
+        }
+    }
+
 
     // Delete button
 
