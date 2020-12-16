@@ -1,40 +1,98 @@
 // Add players into different tiers
 
-    // Store tiers in individual arrays
+// Store tiers in individual arrays
+const tier1 = ["banana", "George"];
+const tier2 = ["apple"];
+const tier3 = ["juice"];
+const tier4 = ["fruit"];
 
-    console.log("hello")
-    
-    const tier1 = ["banana", "George"];
-    const tier2 = ["apple"];
-    const tier3 = ["juice"];
-    const tier4 = ["fruit"];
+// Display names in correct div
+displayTiers()
 
-    // Display names in correct div
-    displayTiers()
+// Function that displays players from each tier on page
+function displayTiers() {
 
-    // Function that displays players from each tier on page
-    function displayTiers() {
-        for (let i = 0; i < tier1.length; i++) {
-            const newDiv = $("<div>");
-            newDiv.text(tier1[i]);
-            $('#tier1').append(newDiv);
-        }
-        for (let i = 0; i < tier2.length; i++) {
-            const newDiv = $("<div>");
-            newDiv.text(tier2[i]);
-            $('#tier2').append(newDiv);
-        }
-        for (let i = 0; i < tier3.length; i++) {
-            const newDiv = $("<div>");
-            newDiv.text(tier3[i]);
-            $('#tier3').append(newDiv);
-        }
-        for (let i = 0; i < tier4.length; i++) {
-            const newDiv = $("<div>");
-            newDiv.text(tier4[i]);
-            $('#tier4').append(newDiv);
-        }
+    for (let i = 0; i < tier1.length; i++) {
+        var newDiv = $("<div>")
+        var newRow = $("<div>");
+        newRow.attr("class", "row")
+
+        const playerName = $("<div>");
+        playerName.attr("class", "col-md-7");
+        playerName.text(tier1[i]);
+
+        // Creates delete button for each player
+        var deleteCol = $("<button>");
+        deleteCol.attr("class", "col-md-3 deleteBtn")
+        deleteCol.text("Delete");
+
+        newRow.append(playerName, deleteCol)
+
+        newDiv.append(newRow)
+
+        $('#tier1').append(newDiv);
     }
+    for (let i = 0; i < tier2.length; i++) {
+        var newDiv = $("<div>")
+        var newRow = $("<div>");
+        newRow.attr("class", "row")
+
+        const playerName = $("<div>");
+        playerName.attr("class", "col-md-7");
+        playerName.text(tier2[i]);
+
+        // Creates delete button for each player
+        var deleteCol = $("<button>");
+        deleteCol.attr("class", "col-md-3 deleteBtn")
+        deleteCol.text("Delete");
+
+        newRow.append(playerName, deleteCol)
+
+        newDiv.append(newRow)
+
+        $('#tier2').append(newDiv);
+    }
+    for (let i = 0; i < tier3.length; i++) {
+        var newDiv = $("<div>")
+        var newRow = $("<div>");
+        newRow.attr("class", "row")
+
+        const playerName = $("<div>");
+        playerName.attr("class", "col-md-7");
+        playerName.text(tier3[i]);
+
+        // Creates delete button for each player
+        var deleteCol = $("<button>");
+        deleteCol.attr("class", "col-md-3 deleteBtn")
+        deleteCol.text("Delete");
+
+        newRow.append(playerName, deleteCol)
+
+        newDiv.append(newRow)
+
+        $('#tier3').append(newDiv);
+    }
+    for (let i = 0; i < tier4.length; i++) {
+        var newDiv = $("<div>")
+        var newRow = $("<div>");
+        newRow.attr("class", "row")
+
+        const playerName = $("<div>");
+        playerName.attr("class", "col-md-7");
+        playerName.text(tier4[i]);
+
+        // Creates delete button for each player
+        var deleteCol = $("<button>");
+        deleteCol.attr("class", "col-md-3 deleteBtn")
+        deleteCol.text("Delete");
+
+        newRow.append(playerName, deleteCol)
+
+        newDiv.append(newRow)
+
+        $('#tier4').append(newDiv);
+    }
+}
 
 
     // Delete button
@@ -48,7 +106,7 @@
     // Get user input of number of teams
 
     // Get user input of number of players from each tier
-    
+
     // Create new array for each team to store that team's players in using for loop
 
     // Iterate over each tier array to get desired amount of players from each tier
