@@ -94,10 +94,13 @@ function displayTiers() {
     }
 }
 
-
-    // Delete button
-
     // Input to add a player to tier
+    // console.log($("#addPlayer1").text)
+    $("#add-button1").on("click", function (event) {
+        event.preventDefault();
+        let playerAdded = $("#addPlayer1").val().trim();
+    
+    })
 
     // Add a save button to save the inputted players to local storage
 
