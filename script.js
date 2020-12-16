@@ -6,20 +6,30 @@ const tier2 = ["apple"];
 const tier3 = ["juice"];
 const tier4 = ["fruit"];
 
+const tier1Div = $('#tier1Div');
+const tier2Div = $('#tier2Div');
+const tier3Div = $('#tier3Div');
+const tier4Div = $('#tier4Div');
+
 // Display names in correct div
-displayTiers()
+// displayTiers()
+
+renderTierPlayers(tier1, tier1Div)
+renderTierPlayers(tier2, tier2Div)
+renderTierPlayers(tier3, tier3Div)
+renderTierPlayers(tier4, tier4Div)
 
 // Function that displays players from each tier on page
-function displayTiers() {
+function renderTierPlayers(tier, tierDiv) {
+    tierDiv.empty();
+    for (let i = 0; i < tier.length; i++) {
 
-    for (let i = 0; i < tier1.length; i++) {
-        var newDiv = $("<div>")
         var newRow = $("<div>");
         newRow.attr("class", "row")
 
         const playerName = $("<div>");
         playerName.attr("class", "col-md-7");
-        playerName.text(tier1[i]);
+        playerName.text(tier[i]);
 
         // Creates delete button for each player
         var deleteCol = $("<button>");
@@ -27,70 +37,8 @@ function displayTiers() {
         deleteCol.text("Delete");
 
         newRow.append(playerName, deleteCol)
-
-        newDiv.append(newRow)
-
-        $('#tier1').append(newDiv);
-    }
-    for (let i = 0; i < tier2.length; i++) {
-        var newDiv = $("<div>")
-        var newRow = $("<div>");
-        newRow.attr("class", "row")
-
-        const playerName = $("<div>");
-        playerName.attr("class", "col-md-7");
-        playerName.text(tier2[i]);
-
-        // Creates delete button for each player
-        var deleteCol = $("<button>");
-        deleteCol.attr("class", "col-md-3 deleteBtn")
-        deleteCol.text("Delete");
-
-        newRow.append(playerName, deleteCol)
-
-        newDiv.append(newRow)
-
-        $('#tier2').append(newDiv);
-    }
-    for (let i = 0; i < tier3.length; i++) {
-        var newDiv = $("<div>")
-        var newRow = $("<div>");
-        newRow.attr("class", "row")
-
-        const playerName = $("<div>");
-        playerName.attr("class", "col-md-7");
-        playerName.text(tier3[i]);
-
-        // Creates delete button for each player
-        var deleteCol = $("<button>");
-        deleteCol.attr("class", "col-md-3 deleteBtn")
-        deleteCol.text("Delete");
-
-        newRow.append(playerName, deleteCol)
-
-        newDiv.append(newRow)
-
-        $('#tier3').append(newDiv);
-    }
-    for (let i = 0; i < tier4.length; i++) {
-        var newDiv = $("<div>")
-        var newRow = $("<div>");
-        newRow.attr("class", "row")
-
-        const playerName = $("<div>");
-        playerName.attr("class", "col-md-7");
-        playerName.text(tier4[i]);
-
-        // Creates delete button for each player
-        var deleteCol = $("<button>");
-        deleteCol.attr("class", "col-md-3 deleteBtn")
-        deleteCol.text("Delete");
-
-        newRow.append(playerName, deleteCol)
-
-        newDiv.append(newRow)
-
-        $('#tier4').append(newDiv);
+        tierDiv.append(newRow);
+        
     }
 }
 
@@ -100,26 +48,28 @@ function displayTiers() {
         event.preventDefault();
         let playerAdded = $("#addPlayer1").val().trim();
         tier1.push(playerAdded);
+        renderTierPlayers(tier1, tier1Div)
     })
 
     $("#add-button2").on("click", function (event) {
         event.preventDefault();
         let playerAdded = $("#addPlayer2").val().trim();
         tier2.push(playerAdded);   
-
+        renderTierPlayers(tier2, tier2Div)
     })
 
     $("#add-button3").on("click", function (event) {
         event.preventDefault();
         let playerAdded = $("#addPlayer3").val().trim();
         tier3.push(playerAdded);   
-
+        renderTierPlayers(tier3, tier3Div)
     })
 
     $("#add-button4").on("click", function (event) {
         event.preventDefault();
         let playerAdded = $("#addPlayer4").val().trim();
-        tier4.push(playerAdded); 
+        tier4.push(playerAdded);
+        renderTierPlayers(tier4, tier4Div) 
     })
 
     // Add a save button to save the inputted players to local storage
