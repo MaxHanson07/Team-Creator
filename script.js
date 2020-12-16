@@ -99,7 +99,27 @@ function displayTiers() {
     $("#add-button1").on("click", function (event) {
         event.preventDefault();
         let playerAdded = $("#addPlayer1").val().trim();
-    
+        tier1.push(playerAdded);
+    })
+
+    $("#add-button2").on("click", function (event) {
+        event.preventDefault();
+        let playerAdded = $("#addPlayer2").val().trim();
+        tier2.push(playerAdded);   
+
+    })
+
+    $("#add-button3").on("click", function (event) {
+        event.preventDefault();
+        let playerAdded = $("#addPlayer3").val().trim();
+        tier3.push(playerAdded);   
+
+    })
+
+    $("#add-button4").on("click", function (event) {
+        event.preventDefault();
+        let playerAdded = $("#addPlayer4").val().trim();
+        tier4.push(playerAdded); 
     })
 
     // Add a save button to save the inputted players to local storage
