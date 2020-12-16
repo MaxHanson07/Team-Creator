@@ -4,20 +4,35 @@
 
     console.log("hello")
     
-    const tier1 = ["banana"];
-    const tier2 = [];
-    const tier3 = [];
-    const tier4 = [];
+    const tier1 = ["banana", "George"];
+    const tier2 = ["apple"];
+    const tier3 = ["juice"];
+    const tier4 = ["fruit"];
 
     // Display names in correct div
-    displayTiers(tier1)
+    displayTiers()
 
     // Function that displays players from each tier on page
-    function displayTiers(tier) {
-        for (let i = 0; i < tier.length; i++) {
+    function displayTiers() {
+        for (let i = 0; i < tier1.length; i++) {
             const newDiv = $("<div>");
-            newDiv.text(tier[i]);
-            $("#tier1").append(newDiv);
+            newDiv.text(tier1[i]);
+            $('#tier1').append(newDiv);
+        }
+        for (let i = 0; i < tier2.length; i++) {
+            const newDiv = $("<div>");
+            newDiv.text(tier2[i]);
+            $('#tier2').append(newDiv);
+        }
+        for (let i = 0; i < tier3.length; i++) {
+            const newDiv = $("<div>");
+            newDiv.text(tier3[i]);
+            $('#tier3').append(newDiv);
+        }
+        for (let i = 0; i < tier4.length; i++) {
+            const newDiv = $("<div>");
+            newDiv.text(tier4[i]);
+            $('#tier4').append(newDiv);
         }
     }
 
