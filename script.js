@@ -49,6 +49,7 @@ function renderTierPlayers(tier, tierDiv) {
         let playerAdded = $("#addPlayer1").val().trim();
         tier1.push(playerAdded);
         renderTierPlayers(tier1, tier1Div)
+        $("#addPlayer1").val("")
     })
 
     $("#add-button2").on("click", function (event) {
@@ -56,6 +57,7 @@ function renderTierPlayers(tier, tierDiv) {
         let playerAdded = $("#addPlayer2").val().trim();
         tier2.push(playerAdded);   
         renderTierPlayers(tier2, tier2Div)
+        $("#addPlayer2").val("")
     })
 
     $("#add-button3").on("click", function (event) {
@@ -63,6 +65,7 @@ function renderTierPlayers(tier, tierDiv) {
         let playerAdded = $("#addPlayer3").val().trim();
         tier3.push(playerAdded);   
         renderTierPlayers(tier3, tier3Div)
+        $("#addPlayer3").val("")
     })
 
     $("#add-button4").on("click", function (event) {
@@ -70,6 +73,7 @@ function renderTierPlayers(tier, tierDiv) {
         let playerAdded = $("#addPlayer4").val().trim();
         tier4.push(playerAdded);
         renderTierPlayers(tier4, tier4Div) 
+        $("#addPlayer4").val("")
     })
 
     // Add a save button to save the inputted players to local storage
