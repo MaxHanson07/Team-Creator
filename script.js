@@ -213,33 +213,49 @@ $("#teamGenerator").on("click", function (event) {
     // Iterate over each tier array to get desired amount of players from each tier
 
     // The amount of iterations is the amount of players specified to be selected from each tier times the number of teams
-    // for (let j = 0; j<teams.length; j++) {
-    //     for ()
-    // }
 
     const tierOnePlayers = draftPlayers(tier1, numOfTier1)
-    console.log(tierOnePlayers)
     const tierTwoPlayers = draftPlayers(tier2, numOfTier2)
-    console.log(tierTwoPlayers)
     const tierThreePlayers = draftPlayers(tier3, numOfTier3)
-    console.log(tierThreePlayers)
     const tierFourPlayers = draftPlayers(tier4, numOfTier4)
-    console.log(tierFourPlayers)
 
-        // Use Math.random to choose a random player from that tier
+    // Keeps track of how much of the team roster is filled
+    let rosterSpot = 1;
 
-        // Assign 1st selected player to team 1, 2nd to team two, etc and repeat until all teams have correct number of players from that tier
-
-        // Repeat the process for all tiers
+    // Assign 1st selected player to team 1, 2nd to team two, etc and repeat until all teams have correct number of players from that tier
+    // Repeat the process for all tiers
+    rosterSpot = assignDraftedPlayers(tierOnePlayers, teams, rosterSpot)
+    rosterSpot = assignDraftedPlayers(tierTwoPlayers, teams, rosterSpot)
+    rosterSpot = assignDraftedPlayers(tierThreePlayers, teams, rosterSpot)
+    rosterSpot = assignDraftedPlayers(tierFourPlayers, teams, rosterSpot)
 
     // Display each team in the proper div
 })
 
+function assignDraftedPlayers(tier, teams, k) {
+
+    for (let i = 0; i < tier.length;) {
+
+
+        for (let j = 0; j < teams.length; j++) {
+            console.log("j" + j)
+            console.log("k" + k)
+
+            teams[j][k] = tier[i];
+            console.log(teams)
+            i++;
+        }
+        k++;
+    }
+    return k
+}
+
 function draftPlayers(tier, numPicks) {
     const selectedPlayers = [];
     const copyOfTierArray = Array.from(tier);
-    for (i=0; i<numPicks; i++) {
-        
+    for (i = 0; i < numPicks; i++) {
+
+        // Use Math.random to choose a random player from that tier
         let randomIndex = Math.floor(Math.random() * copyOfTierArray.length);
 
         selectedPlayers.push(copyOfTierArray[randomIndex])
@@ -252,6 +268,21 @@ function draftPlayers(tier, numPicks) {
     }
 
     return selectedPlayers;
+}
+
+function renderTeams(teams) {
+    $("#teams").empty();
+    for (let i = 0; i < teams.length; i++) {
+
+        const newRow = $("<div>");
+        newRow.attr("class", "row")
+
+        const playerName = $("<div>");
+        playerName.attr("class", "col-md-7 playerName");
+        playerName.text(tier[i]);
+   
+   
+    // $("#teams").append()
 }
 
     // Add validation
