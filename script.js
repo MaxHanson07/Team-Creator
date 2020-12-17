@@ -2,9 +2,9 @@
 
 // Store tiers in individual arrays
 const tier1 = ["banana", "George", "bob", "Jou", "Kog"];
-const tier2 = ["apple"];
-const tier3 = ["juice"];
-const tier4 = ["fruit"];
+const tier2 = ["apple", "orange", "peach", "berry"];
+const tier3 = ["juice", "soda", "nectar", "beer"];
+const tier4 = ["fruit", "vegis", "meat", "dairy"];
 
 const tier1Div = $('#tier1Div');
 const tier2Div = $('#tier2Div');
@@ -217,8 +217,14 @@ $("#teamGenerator").on("click", function (event) {
     //     for ()
     // }
 
-    const tierOnePlayers = draftPlayers(tier1, 4)
+    const tierOnePlayers = draftPlayers(tier1, numOfTier1)
     console.log(tierOnePlayers)
+    const tierTwoPlayers = draftPlayers(tier2, numOfTier2)
+    console.log(tierTwoPlayers)
+    const tierThreePlayers = draftPlayers(tier3, numOfTier3)
+    console.log(tierThreePlayers)
+    const tierFourPlayers = draftPlayers(tier4, numOfTier4)
+    console.log(tierFourPlayers)
 
         // Use Math.random to choose a random player from that tier
 
