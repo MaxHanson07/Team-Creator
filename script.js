@@ -1,7 +1,7 @@
 // Add players into different tiers
 
 // Store tiers in individual arrays
-const tier1 = ["banana", "George"];
+const tier1 = ["banana", "George", "bob", "Jou", "Kog"];
 const tier2 = ["apple"];
 const tier3 = ["juice"];
 const tier4 = ["fruit"];
@@ -61,21 +61,21 @@ function renderTierPlayers(tier, tierDiv, tierNumber) {
     // $(".deleteBtn").on("click", function (event) {
     //     event.preventDefault();
     //     console.log("clicked")
-    
+
     //     console.log($(this).closest(".row").children(".playerName").contents().text())
     //     console.log($(this).closest(".row").children(".playerName").contents())
-    
-    
+
+
     //     const playerDeleted = $(this).closest(".row").children(".playerName").contents().text();
     //     const index = tier1.indexOf(playerDeleted);
-    
+
     //     tier1.splice(index, 1);
-    
+
     //     console.log(tier2)
-    
+
     //     $(this).closest(".row").remove();
     //     console.log(tier2)
-    
+
     // })
     // $(".deleteBtn").on("click", function (event) {
     //     event.preventDefault();
@@ -158,26 +158,26 @@ $("#add-button4").on("click", function (event) {
     $("#addPlayer4").val("")
 })
 
-    // $(".deleteBtn").on("click", function (event) {
-    //     event.preventDefault();
-    //     console.log("clicked")
+// $(".deleteBtn").on("click", function (event) {
+//     event.preventDefault();
+//     console.log("clicked")
 
-    //     console.log($(this).closest(".row"))
-    //     $(this).closest(".row").remove();
-    //     const player = $(this).closest(".playerName").text()
-    //     console.log(player)
+//     console.log($(this).closest(".row"))
+//     $(this).closest(".row").remove();
+//     const player = $(this).closest(".playerName").text()
+//     console.log(player)
 
 
-    // })
+// })
 
-    // Add a save button to save the inputted players to local storage
+// Add a save button to save the inputted players to local storage
 
 
 
 // Randomly generate 10-man teams
 
 $("#teamGenerator").on("click", function (event) {
-    
+
     const teams = [];
     // Get user input of number of teams
     event.preventDefault();
@@ -192,7 +192,7 @@ $("#teamGenerator").on("click", function (event) {
     const numOfTier4 = $("#numberOfTierFour").val()
 
     // Create new array for each team to store that team's players in using for loop
-    for (let i =0; i<numOfTeams; i++) {
+    for (let i = 0; i < numOfTeams; i++) {
         let newTeam = {
             1: "",
             2: "",
@@ -208,11 +208,17 @@ $("#teamGenerator").on("click", function (event) {
 
         teams.push(newTeam)
         console.log(teams)
-    } 
+    }
 
     // Iterate over each tier array to get desired amount of players from each tier
 
-        // The amount of iterations is the amount of players specified to be selected from each tier times the number of teams
+    // The amount of iterations is the amount of players specified to be selected from each tier times the number of teams
+    // for (let j = 0; j<teams.length; j++) {
+    //     for ()
+    // }
+
+    const tierOnePlayers = draftPlayers(tier1, 4)
+    console.log(tierOnePlayers)
 
         // Use Math.random to choose a random player from that tier
 
@@ -222,6 +228,25 @@ $("#teamGenerator").on("click", function (event) {
 
     // Display each team in the proper div
 })
+
+function draftPlayers(tier, numPicks) {
+    const selectedPlayers = [];
+    const copyOfTierArray = Array.from(tier);
+    for (i=0; i<numPicks; i++) {
+        
+        let randomIndex = Math.floor(Math.random() * copyOfTierArray.length);
+
+        selectedPlayers.push(copyOfTierArray[randomIndex])
+
+        copyOfTierArray.splice(randomIndex, 1);
+
+        console.log("Original" + tier)
+        console.log("Copy" + copyOfTierArray)
+
+    }
+
+    return selectedPlayers;
+}
 
     // Add validation
 
