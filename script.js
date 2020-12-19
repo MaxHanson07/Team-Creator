@@ -32,6 +32,7 @@ function renderTierPlayers(tier, tierDiv, tierNumber) {
         // Creates delete button for each player
         var deleteCol = $("<button>");
         deleteCol.attr("class", "col-md-3 deleteBtn")
+        deleteCol.data("tierArray", tier);
         // deleteCol.attr("data-player", player)
         deleteCol.text("Delete");
 
@@ -55,8 +56,6 @@ function renderTierPlayers(tier, tierDiv, tierNumber) {
         newRow.append(playerName, deleteCol)
         tierDiv.append(newRow);
 
-        console.log(tier2)
-
     }
     // $(".deleteBtn").on("click", function (event) {
     //     event.preventDefault();
@@ -65,13 +64,16 @@ function renderTierPlayers(tier, tierDiv, tierNumber) {
     //     console.log($(this).closest(".row").children(".playerName").contents().text())
     //     console.log($(this).closest(".row").children(".playerName").contents())
 
-
+    //     const tierArray = $(this).data("tierArray")
+    //     console.log("Tier Array: " + tierArray)
     //     const playerDeleted = $(this).closest(".row").children(".playerName").contents().text();
+    //     console.log("Player deleted: " + playerDeleted)
     //     const index = tier1.indexOf(playerDeleted);
+    //     console.log("index " + index)
 
     //     tier1.splice(index, 1);
 
-    //     console.log(tier2)
+    //     console.log("tier 2: " + tier2)
 
     //     $(this).closest(".row").remove();
     //     console.log(tier2)
@@ -103,6 +105,29 @@ function renderTierPlayers(tier, tierDiv, tierNumber) {
 
     // })
 }
+
+$(".deleteBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("clicked")
+
+    console.log($(this).closest(".row").children(".playerName").contents().text())
+    console.log($(this).closest(".row").children(".playerName").contents())
+
+    const tierArray = $(this).data("tierArray")
+    console.log("Tier Array: " + tierArray)
+    const playerDeleted = $(this).closest(".row").children(".playerName").contents().text();
+    console.log("Player deleted: " + playerDeleted)
+    const index = tierArray.indexOf(playerDeleted);
+    console.log("index " + index)
+
+    tierArray.splice(index, 1);
+
+    console.log("tier Array:" + tierArray)
+
+    $(this).closest(".row").remove();
+    console.log(tier2)
+
+})
 
 // $(".deleteBtn1").on("click", function (event) {
 //     event.preventDefault();
