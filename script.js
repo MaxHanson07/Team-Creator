@@ -6,19 +6,26 @@ const tier2 = ["Villanazul", "Jose Martinez", "Turner Stiers", "Carlos Dominguez
 const tier3 = ["Atticus Finch", "Phifer", "Nathan Sarchet", "Richard Tetu", "Stan Barta", "Tim Boonstra", "Steve Fikkert", "Greay Lawn", "Howbout Tiger", "Steve Lervick", "Dan Thayer", "Chris Baisch", "Grandpapi", "Ivan Van Duyn", "Ted Stiers", "Bob Chik-Fil-A"];
 const tier4 = ["Meat Man", "King", "Largemouth", "Noah Barta", "Julian Dailey", "Mike Comacho", "Myers", "Lyle Leopold", "Rod", "Lane Sacksteder", "Brett Nelson", "Canaan"];
 
+var allPlayers = [tier1, tier2, tier3, tier4]
+console.log("allPlayers before storage: " + allPlayers)
+// localStorage.setItem("players", allPlayers)
+// allPlayers = localStorage.getItem("players")
+// console.log("allPlayers after storage: " + allPlayers)
+
+
 const tier1Div = $('#tier1Div');
 const tier2Div = $('#tier2Div');
 const tier3Div = $('#tier3Div');
 const tier4Div = $('#tier4Div');
 
 // Display names in correct div
-renderTierPlayers(tier1, tier1Div, "tier1")
-renderTierPlayers(tier2, tier2Div, "tier2")
-renderTierPlayers(tier3, tier3Div, "tier3")
-renderTierPlayers(tier4, tier4Div, "tier4")
+renderTierPlayers(tier1, tier1Div)
+renderTierPlayers(tier2, tier2Div)
+renderTierPlayers(tier3, tier3Div)
+renderTierPlayers(tier4, tier4Div)
 
 // Function that displays players from each tier on page
-function renderTierPlayers(tier, tierDiv, tierNumber) {
+function renderTierPlayers(tier, tierDiv) {
     tierDiv.empty();
     for (let i = 0; i < tier.length; i++) {
 
@@ -35,78 +42,12 @@ function renderTierPlayers(tier, tierDiv, tierNumber) {
         deleteCol.data("tierArray", tier);
         // deleteCol.attr("data-player", player)
         deleteCol.text("Delete");
-
-        // Assigns class appropriate to which tier it belongs to
-        // if (tierNumber === 1)
-        // {
-
-        // }
-        // switch (tierNumber) {
-        //     case 1: deleteCol.attr("class", "col-md-3 deleteBtn1");
-        //         break;
-        //     case 2: deleteCol.attr("class", "col-md-3 deleteBtn2");
-        //         break;
-        //     case 3: deleteCol.attr("class", "col-md-3 deleteBtn3");
-        //         break;
-        //     case 4: deleteCol.attr("class", "col-md-3 deleteBtn4");
-
-        // }
-
-
         newRow.append(playerName, deleteCol)
         tierDiv.append(newRow);
 
     }
-    // $(".deleteBtn").on("click", function (event) {
-    //     event.preventDefault();
-    //     console.log("clicked")
-
-    //     console.log($(this).closest(".row").children(".playerName").contents().text())
-    //     console.log($(this).closest(".row").children(".playerName").contents())
-
-    //     const tierArray = $(this).data("tierArray")
-    //     console.log("Tier Array: " + tierArray)
-    //     const playerDeleted = $(this).closest(".row").children(".playerName").contents().text();
-    //     console.log("Player deleted: " + playerDeleted)
-    //     const index = tier1.indexOf(playerDeleted);
-    //     console.log("index " + index)
-
-    //     tier1.splice(index, 1);
-
-    //     console.log("tier 2: " + tier2)
-
-    //     $(this).closest(".row").remove();
-    //     console.log(tier2)
-
-    // })
-    // $(".deleteBtn").on("click", function (event) {
-    //     event.preventDefault();
-    //     console.log("clicked")
-    //     console.log(tier2)
-
-    //     console.log($(this).closest(".row").children(".playerName").contents().text())
-    //     console.log($(this).closest(".row").children(".playerName").contents())
-
-    //     console.log($(this).attr("data-tier"))
-
-    //     const playerDeleted = $(this).closest(".row").children(".playerName").contents().text();
-    //     // const tierHoldingDeletedPlayer = $(this).closest(".row").children(".playerName").contents().tier
-    //     const tierHoldingDeletedPlayer = tier
-    //     console.log(tierHoldingDeletedPlayer)
-
-    //     const index = tierNumber.indexOf(playerDeleted);
-    //     console.log(tierNumber)
-    //     tierNumber.splice(index, 1);
-
-    //     console.log(tier2)
-
-    //     $(this).closest(".row").remove();
-    //     console.log(tier2)
-
-    // })
 }
-
-$(".deleteBtn").on("click", function (event) {
+$(document).on("click", ".deleteBtn", function (event) {
     event.preventDefault();
     console.log("clicked")
 
@@ -129,20 +70,23 @@ $(".deleteBtn").on("click", function (event) {
 
 })
 
-// $(".deleteBtn1").on("click", function (event) {
+// $(".deleteBtn").on("click", function (event) {
 //     event.preventDefault();
 //     console.log("clicked")
 
 //     console.log($(this).closest(".row").children(".playerName").contents().text())
 //     console.log($(this).closest(".row").children(".playerName").contents())
 
-
+//     const tierArray = $(this).data("tierArray")
+//     console.log("Tier Array: " + tierArray)
 //     const playerDeleted = $(this).closest(".row").children(".playerName").contents().text();
-//     const index = tier1.indexOf(playerDeleted);
+//     console.log("Player deleted: " + playerDeleted)
+//     const index = tierArray.indexOf(playerDeleted);
+//     console.log("index " + index)
 
-//     tier1.splice(index, 1);
+//     tierArray.splice(index, 1);
 
-//     console.log(tier2)
+//     console.log("tier Array:" + tierArray)
 
 //     $(this).closest(".row").remove();
 //     console.log(tier2)
@@ -183,20 +127,10 @@ $("#add-button4").on("click", function (event) {
     $("#addPlayer4").val("")
 })
 
-// $(".deleteBtn").on("click", function (event) {
-//     event.preventDefault();
-//     console.log("clicked")
-
-//     console.log($(this).closest(".row"))
-//     $(this).closest(".row").remove();
-//     const player = $(this).closest(".playerName").text()
-//     console.log(player)
-
-
-// })
-
 // Add a save button to save the inputted players to local storage
-
+$("#save-players").on("click", function (event) {
+    localStorage.setItem(players, allPlayers)
+})
 
 
 // Randomly generate 10-man teams
