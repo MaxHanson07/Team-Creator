@@ -1,10 +1,10 @@
 // Add players into different tiers
 
 // Store tiers in individual arrays
-const tier1 = ["banana", "George", "bob", "Jou", "Kog"];
-const tier2 = ["apple", "orange", "peach", "berry"];
-const tier3 = ["juice", "soda", "nectar", "beer"];
-const tier4 = ["fruit", "vegis", "meat", "dairy"];
+const tier1 = ["Diet Doc", "Tom Robinson", "Pumpkin Puss", "Darin Ekkelkamp", "Luke Baeslack", "Steve Boon", "Patrick Russell", "Dik Gudmunson", "Ravi", "Mother Goose", "Banjo", "Gomez", "Collin Vanderark"];
+const tier2 = ["Villanazul", "Jose Martinez", "Turner Stiers", "Carlos Dominguez", "Jerry Rivers", "Zeus", "Gunnar", "Kyle", "Giles", "Derrick", "Brian", "Micah", "Felipe", "Guido", "Pepper", "Kab", "Kevin Maas", "Chris Wyatt", "Mucke", "Cody See", "Garret Kuipers", "Burmeister", "Jimmy Stewart", "Caleb Boon", "Max Hanson", "Guy Corp", "Tim Hanson", "Vader", "Paul Westra", "Mike Lubbers"];
+const tier3 = ["Atticus Finch", "Phifer", "Nathan Sarchet", "Richard Tetu", "Stan Barta", "Tim Boonstra", "Steve Fikkert", "Greay Lawn", "Howbout Tiger", "Steve Lervick", "Dan Thayer", "Chris Baisch", "Grandpapi", "Ivan Van Duyn", "Ted Stiers", "Bob Chik-Fil-A"];
+const tier4 = ["Meat Man", "King", "Largemouth", "Noah Barta", "Julian Dailey", "Mike Comacho", "Myers", "Lyle Leopold", "Rod", "Lane Sacksteder", "Brett Nelson", "Canaan"];
 
 const tier1Div = $('#tier1Div');
 const tier2Div = $('#tier2Div');
@@ -230,6 +230,7 @@ $("#teamGenerator").on("click", function (event) {
     rosterSpot = assignDraftedPlayers(tierFourPlayers, teams, rosterSpot)
 
     // Display each team in the proper div
+    renderTeams(teams);
 })
 
 function assignDraftedPlayers(tier, teams, k) {
@@ -272,17 +273,30 @@ function draftPlayers(tier, numPicks) {
 
 function renderTeams(teams) {
     $("#teams").empty();
+    console.log("Teams Render " + teams)
     for (let i = 0; i < teams.length; i++) {
+
 
         const newRow = $("<div>");
         newRow.attr("class", "row")
+        const teamName = $("<h2>");
 
-        const playerName = $("<div>");
-        playerName.attr("class", "col-md-7 playerName");
-        playerName.text(tier[i]);
-   
-   
-    // $("#teams").append()
+
+        for (let j = 1; j < 11; j++) {
+
+            const teamRoster = $("<div>");
+            teamRoster.attr("class", "col-md-6 teamRoster");
+            console.log("Rosters " + teams[i][j])
+            teamRoster.text(teams[i][j]);
+
+            newRow.append(teamRoster);
+        }
+
+
+        teamName.text("Team " + i)
+        $("#teams").append(teamName)
+        $("#teams").append(newRow);
+    }
 }
 
     // Add validation
